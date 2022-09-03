@@ -3,7 +3,7 @@ import { CreateUserService } from "../services/CreateUserService"
 
 export class CreateUserController {
   async handle(request: Request, response: Response) {
-    const { name, nickname, email, password, phone, gender, birth_date } =
+    const { name, nickname, email, password, phone, gender, birthDate } =
       request.body
 
     const service = new CreateUserService()
@@ -14,7 +14,7 @@ export class CreateUserController {
       gender,
       password,
       nickname,
-      birth_date
+      birthDate
     )
 
     return response.status(result.code).json(result.data)

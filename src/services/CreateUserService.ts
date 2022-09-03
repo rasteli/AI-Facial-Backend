@@ -10,24 +10,34 @@ export class CreateUserService {
     gender: string,
     password: string,
     nickname: string,
-    birth_date: Date
+    birthDate: string
   ) {
-    let user = await prismaClient.user.findFirst({
+    const userEmail = await prismaClient.user.findFirst({
       where: {
         email
       }
     })
+    const userPhone = await prismaClient.user.findFirst({
+      where: {
+        phone
+      }
+    })
+    const userNickname = await prismaClient.user.findFirst({
+      where: {
+        nickname
+      }
+    })
 
-    if (!user) {
+    if (!userEmail && !userPhone && !userNickname) {
       try {
-        user = await prismaClient.user.create({
+        const user = await prismaClient.user.create({
           data: {
             name,
             email,
             phone,
             gender,
             nickname,
-            birth_date,
+            birthDate,
             password: await hashPassowrd(password)
           }
         })
@@ -40,7 +50,7 @@ export class CreateUserService {
     }
 
     return {
-      data: { error: "Email já está sendo usado por outra conta." },
+      data: { error: "Informações já estão sendo usadas por outra conta." },
       code: 403
     }
   }

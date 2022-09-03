@@ -18,7 +18,7 @@ model User {
   phone       String    @unique
   nickname    String    @unique
   password    String
-  birth_date  DateTime
+  birthDate   String
 
   @@map("users")
 }

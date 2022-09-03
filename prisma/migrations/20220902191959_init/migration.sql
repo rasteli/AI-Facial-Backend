@@ -7,7 +7,7 @@ CREATE TABLE "users" (
     "phone" TEXT NOT NULL,
     "nickname" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "birth_date" DATETIME NOT NULL
+    "birthDate" TEXT NOT NULL
 );
 
 -- CreateIndex
