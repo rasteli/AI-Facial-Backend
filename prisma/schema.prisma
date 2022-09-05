@@ -12,6 +12,7 @@ datasource db {
 
 model User {
   id          String    @id @default(uuid())
+  face        Face?
   name        String
   gender      String
   email       String    @unique
@@ -19,6 +20,15 @@ model User {
   nickname    String    @unique
   password    String
   birthDate   String
-
+  
   @@map("users")
+}
+
+model Face {
+  id      String    @id @default(uuid())
+  face    String
+  user    User      @relation(fields: [userId], references: [id])
+  userId  String    @unique
+
+  @@map("faces")
 }

@@ -6,6 +6,9 @@ export class GetUserService {
       const user = await prismaClient.user.findFirst({
         where: {
           id: user_id
+        },
+        include: {
+          face: true
         }
       })
 
