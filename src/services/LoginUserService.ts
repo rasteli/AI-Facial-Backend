@@ -11,8 +11,11 @@ export class LoginUserService {
     )
 
     try {
-      let user = await prismaClient.user.findFirst({
-        where: patternExists ? { email: login } : { nickname: login }
+      const user = await prismaClient.user.findFirst({
+        where: patternExists ? { email: login } : { nickname: login },
+        include: {
+          face: true
+        }
       })
 
       if (

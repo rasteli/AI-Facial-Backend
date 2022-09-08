@@ -13,6 +13,9 @@ export class UserFaceService {
               face: faces
             }
           }
+        },
+        include: {
+          face: true
         }
       })
 

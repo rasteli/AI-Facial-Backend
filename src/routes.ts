@@ -5,6 +5,7 @@ import { GetUserController } from "./controllers/GetUserController"
 import { ListUsersController } from "./controllers/ListUsersController"
 import { LoginUserController } from "./controllers/LoginUserController"
 import { CreateUserController } from "./controllers/CreateUserController"
+import { UpdateUserController } from "./controllers/UpdateUserController"
 
 /* Middleware */
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated"
@@ -20,6 +21,7 @@ routes.get("/users", new ListUsersController().handle)
 routes.post("/login", new LoginUserController().handle)
 routes.post("/signup", new CreateUserController().handle)
 routes.get("/user", ensureAuthenticated, new GetUserController().handle)
+routes.put("/update", ensureAuthenticated, new UpdateUserController().handle)
 
 /* Face */
 routes.get("/faces", new ListFacesController().handle)
