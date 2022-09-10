@@ -1,7 +1,7 @@
 import crypto from "crypto"
 
 import { prismaClient } from "../prisma"
-import { sendMail } from "../utils/senMail"
+import { sendMail } from "../utils/sendMail"
 import { hashPassowrd } from "../utils/bcryption"
 
 export class RequestPasswordResetService {
