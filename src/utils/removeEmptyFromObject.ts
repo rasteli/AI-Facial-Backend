@@ -1,9 +1,17 @@
+interface Data {
+  [key: string]: string
+}
+
 export function removeEmptyFromObject(object: Object) {
-  const filteredObject = Object.entries(object).filter(([, value]) => {
+  const filteredObjectToArray = Object.entries(object).filter(([, value]) => {
     return value.length > 0
-  })
+  }) // -> [[key, value]]
 
-  console.log(filteredObject)
+  const data: Data = {}
 
-  return filteredObject
+  filteredObjectToArray.forEach(([key, value]) => {
+    data[key] = value
+  }) // -> {key: value}
+
+  return data
 }

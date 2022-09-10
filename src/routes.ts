@@ -14,6 +14,10 @@ import { ensureAuthenticated } from "./middlewares/ensureAuthenticated"
 import { UserFaceController } from "./controllers/UserFaceController"
 import { ListFacesController } from "./controllers/ListFacesController"
 
+/* Reset Password */
+import { ResetPasswordController } from "./controllers/ResetPasswordController"
+import { RequestPasswordResetController } from "./controllers/RequestPasswordResetController"
+
 const routes = Router()
 
 /* User */
@@ -26,5 +30,9 @@ routes.put("/update", ensureAuthenticated, new UpdateUserController().handle)
 /* Face */
 routes.get("/faces", new ListFacesController().handle)
 routes.put("/userface", ensureAuthenticated, new UserFaceController().handle)
+
+/* Reset Password */
+routes.put("/reset-password", new ResetPasswordController().handle)
+routes.post("/request-reset", new RequestPasswordResetController().handle)
 
 export { routes }

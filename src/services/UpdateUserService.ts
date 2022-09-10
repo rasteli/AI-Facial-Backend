@@ -1,4 +1,5 @@
 import { prismaClient } from "../prisma"
+import { hashPassowrd } from "../utils/bcryption"
 import { removeEmptyFromObject } from "../utils/removeEmptyFromObject"
 
 interface Update {
@@ -14,6 +15,10 @@ interface Update {
 export class UpdateUserService {
   async execute(user_id: string, update: Update) {
     const data = removeEmptyFromObject(update)
+
+    if (data.hasOwnProperty("password")) {
+      data.password = await hashPassowrd(data.password)
+    }
 
     try {
       const user = await prismaClient.user.update({

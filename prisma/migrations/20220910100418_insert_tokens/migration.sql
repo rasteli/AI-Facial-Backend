@@ -1,6 +1,7 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
+    "token" TEXT,
     "name" TEXT NOT NULL,
     "gender" TEXT NOT NULL,
     "email" TEXT NOT NULL,
