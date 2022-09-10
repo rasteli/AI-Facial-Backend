@@ -1,5 +1,4 @@
 import { prismaClient } from "../prisma"
-import { signToken } from "../utils/signJSONtoken"
 import { compareHash, hashPassowrd } from "../utils/bcryption"
 
 export class ResetPasswordService {
@@ -25,8 +24,7 @@ export class ResetPasswordService {
           }
         })
 
-        const token = signToken(user)
-        return { data: { token, user }, code: 200 }
+        return { data: { user }, code: 200 }
       }
 
       return { data: { error: "Informação de usuário inválida." }, code: 401 }
