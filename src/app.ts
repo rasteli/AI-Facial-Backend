@@ -9,14 +9,16 @@ import { routes } from "./routes"
 const app = express()
 const server = http.createServer(app)
 
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-    preflightContinue: true
-  })
-)
-app.options("*", cors())
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN,
+  credentials: true,
+  methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type"],
+  preflightContinue: true
+}
+
+app.use(cors(corsOptions))
+app.options("*", cors(corsOptions))
 app.use(express.json())
 app.use(routes)
 
