@@ -1,10 +1,13 @@
 {
-  "name": "IAFacial",
+  "name": "AI-Facial",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/server.ts"
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
