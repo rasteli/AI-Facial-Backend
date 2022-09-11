@@ -10,7 +10,7 @@ const app = express()
 const server = http.createServer(app)
 
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN,
+  origin: "https://aifacial.vercel.app",
   credentials: true,
   methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
   allowedHeaders: ["Content-Type"],
