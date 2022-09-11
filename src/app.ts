@@ -13,7 +13,7 @@ const corsOptions = {
   origin: "https://aifacial.vercel.app",
   credentials: true,
   methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ["Content-Type"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   preflightContinue: true
 }
 
