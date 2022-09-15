@@ -43,7 +43,7 @@ export class CreateUserService {
         })
 
         const token = signToken(user)
-        return { data: { token, user }, code: 200 }
+        return { data: { token, user }, code: 201 }
       } catch {
         return { data: { error: "Ops! Algo deu errado..." }, code: 500 }
       }

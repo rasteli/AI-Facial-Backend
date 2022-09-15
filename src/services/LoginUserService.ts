@@ -27,7 +27,7 @@ export class LoginUserService {
         return { data: { token, user }, code: 200 }
       }
 
-      return { data: { error: "Informação de usuário inválida." }, code: 401 }
+      return { data: { error: "Informação de usuário inválida." }, code: 404 }
     } catch {
       return { data: { error: "Ops! Algo deu errado..." }, code: 500 }
     }

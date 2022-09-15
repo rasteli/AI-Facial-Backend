@@ -19,7 +19,7 @@ export class UserFaceService {
         }
       })
 
-      return { data: { user }, code: 200 }
+      return { data: { user }, code: 201 }
     } catch {
       return { data: { error: "Ops! Algo deu errado..." }, code: 500 }
     }
