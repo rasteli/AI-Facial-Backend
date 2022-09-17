@@ -24,12 +24,16 @@ const routes = Router()
 routes.get("/users", new ListUsersController().handle)
 routes.post("/login", new LoginUserController().handle)
 routes.post("/signup", new CreateUserController().handle)
-routes.get("/user", ensureAuthenticated, new GetUserController().handle)
-routes.put("/users", ensureAuthenticated, new UpdateUserController().handle)
+routes.get("/users/:id", ensureAuthenticated, new GetUserController().handle)
+routes.put("/users/:id", ensureAuthenticated, new UpdateUserController().handle)
 
 /* Face */
 routes.get("/faces", new ListFacesController().handle)
-routes.put("/userfaces", ensureAuthenticated, new UserFaceController().handle)
+routes.put(
+  "/users/:id/faces",
+  ensureAuthenticated,
+  new UserFaceController().handle
+)
 
 /* Reset Password */
 routes.put("/reset-password", new ResetPasswordController().handle)
