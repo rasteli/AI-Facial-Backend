@@ -27,11 +27,16 @@ export class RequestPasswordResetService {
         })
 
         const link = `${process.env.CLIENT_URL}/passwordReset?token=${token}&id=${user.id}`
-        const sendMailPayload = { name: user.name, link }
-        const template =
-          "../utils/email/templates/requestResetPassword.handlebars"
 
-        sendMail(email, sendMailPayload, "Alteração de senha", template)
+        const mail = {
+          fromEmail: process.env.MY_EMAIL as string,
+          toEmail: email,
+          payload: { name: user.name, link },
+          subject: "Alteração de senha",
+          template: "../utils/email/templates/requestResetPassword.handlebars"
+        }
+
+        sendMail(mail)
         return { data: { message: "Email enviado.", link }, code: 200 }
       }
 
@@ -39,8 +44,7 @@ export class RequestPasswordResetService {
         data: { error: "Email não vinculado a nenhuma conta." },
         code: 404
       }
-    } catch (error: any) {
-      console.log(error)
+    } catch {
       return { data: { error: "Ops! Algo deu errado..." }, code: 500 }
     }
   }

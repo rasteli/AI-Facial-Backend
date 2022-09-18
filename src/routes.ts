@@ -18,6 +18,9 @@ import { ListFacesController } from "./controllers/ListFacesController"
 import { ResetPasswordController } from "./controllers/ResetPasswordController"
 import { RequestPasswordResetController } from "./controllers/RequestPasswordResetController"
 
+/* Contact */
+import { ContactController } from "./controllers/ContactController"
+
 const routes = Router()
 
 /* User */
@@ -36,7 +39,10 @@ routes.put(
 )
 
 /* Reset Password */
-routes.put("/reset-password", new ResetPasswordController().handle)
+routes.put("/users/:id/password", new ResetPasswordController().handle)
 routes.post("/request-reset", new RequestPasswordResetController().handle)
+
+/* Contact */
+routes.post("/contact", new ContactController().handle)
 
 export { routes }

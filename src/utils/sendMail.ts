@@ -3,17 +3,21 @@ import path from "path"
 import nodemailer from "nodemailer"
 import handlebars from "handlebars"
 
-interface RequestPayload {
-  name: string
-  link: string
+interface Mail {
+  fromEmail: string
+  toEmail: string
+  payload: any
+  subject: string
+  template: string
 }
 
-export function sendMail(
-  email: string,
-  payload: RequestPayload,
-  subject: string,
-  template: string
-) {
+export function sendMail({
+  fromEmail,
+  toEmail,
+  payload,
+  subject,
+  template
+}: Mail) {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: 587,
@@ -27,8 +31,8 @@ export function sendMail(
   const comiledTemplateSource = handlebars.compile(templateSource)
 
   const options = {
-    from: process.env.FROM_EMAIL,
-    to: email,
+    from: fromEmail,
+    to: toEmail,
     subject,
     html: comiledTemplateSource(payload)
   }
